@@ -8,7 +8,7 @@
 
 ให้ answer = number
 
-ทำซ้ำไปเรื่อยๆจนกว่า answer > 1
+ทำซ้ำไปเรื่อยๆเงื่อนไขคือ answer > 1
     ถ้า number % op == 0
         นำ number /= op
         ให้ answer = number
