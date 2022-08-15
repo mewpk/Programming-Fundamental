@@ -1,0 +1,19 @@
+ประกาศตัวแปรจำนวนเต็ม ได้แก่  number , answer , op 
+
+ให้ op = 2
+
+แสดงข้อความ "Enter number :"
+
+รับค่า number จากทางแป้นพิมพ์
+
+ให้ answer = number
+
+ทำซ้ำไปเรื่อยๆจนกว่า answer > 1
+    ถ้า number % op == 0
+        นำ number /= op
+        ให้ answer = number
+        แสดงข้อความ ตัวแปร op
+        ถ้า answer != 1
+            แสดงข้อความ " x "
+    ไม่ตรงเงื่อนไข
+        ให้ op += 1
