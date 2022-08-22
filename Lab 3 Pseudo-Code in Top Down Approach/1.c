@@ -2,7 +2,7 @@
 
 int main()
 {
-    int number, x, y = 0;
+    int number, mod, y = 0;
     printf("number :");
     scanf("%d", &number);
 
@@ -13,9 +13,9 @@ int main()
         if (number > 0)
         {
 
-            x = number % 10;
-            // printf("%d",x);
-            y += x;
+            mod = number % 10;
+            // printf("%d",mod);
+            y += mod;
             number = number / 10;
         }
         else
