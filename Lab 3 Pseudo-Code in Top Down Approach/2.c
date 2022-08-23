@@ -1,35 +1,39 @@
 #include <stdio.h>
 
-
 int main()
-{
-    int px, x = 0;
-    printf("P(x) :");
-    scanf("%d", &px);
-
-    printf("P(%d) = ", px);
+{   
+    int sum = 0;
     for (int i = 1; i <= 10000; i++)
     {
-        if (px == x || px == i)
-        {
-            break;
-        }
-        else if (px % i == 0)
-        {
-            if (i == 1)
+        for (int j = 1; j < i; j++)
+        {   
+            if (sum > i)
             {
-
-                printf("%d ", i);
-                x += i;
+                break;
             }
-            else
+            
+            if (i % j == 0 )
             {
-
-                printf("+ %d ", i);
-                x += i;
+                sum += j;
             }
+            
         }
+        if (i == 1){
+            
+            printf("P(1) = 1 \n");
+        }
+        
+        if (sum == i  )
+        {
+            printf("P(%d) = %d \n",i,sum);
+            sum = 0;
+        }
+        else{
+            sum = 0;
+        }
+        
+        
     }
-
+    
     return 0;
 }
