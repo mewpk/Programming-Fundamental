@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <string.h>
+
 
 int main()
 {
-    char *answer;
     int px, x = 0;
     printf("P(x) :");
     scanf("%d", &px);
