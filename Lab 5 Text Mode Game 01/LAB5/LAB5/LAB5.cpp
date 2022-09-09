@@ -10,6 +10,7 @@ void draw_ship(int x, int y)
     SetConsoleCursorPosition(
         GetStdHandle(STD_OUTPUT_HANDLE), c);
     printf(" <-0-> ");
+    
 }
 int main()
 {
@@ -25,7 +26,7 @@ int main()
         if (_kbhit())
         {   
             ch = _getch();
-            system("CLS");
+           system("CLS");
             if (ch == 'a' && x > 0)
             {   
                 draw_ship(x -= 2, y);
