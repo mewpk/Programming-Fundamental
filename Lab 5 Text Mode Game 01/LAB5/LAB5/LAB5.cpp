@@ -3,10 +3,6 @@
 #include <conio.h>
 #include <stdlib.h>
 
-
-
-
-
 void draw_ship(int x, int y)
 {   
     
@@ -20,14 +16,11 @@ int main()
     system("cls");
     char ch = ' ';
     int x = 38, y = 20;
-
-   
     draw_ship(x, y);
     
   
     do
     {
-        
         
         if (_kbhit())
         {   
