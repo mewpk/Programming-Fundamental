@@ -1,0 +1,9 @@
+﻿  LAB5.cpp
+D:\PROJECTS\KMITL\Programming-Fundamental\Lab 5 Text Mode Game 01\LAB5\LAB5\LAB5.cpp(13,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\PROJECTS\KMITL\Programming-Fundamental\Lab 5 Text Mode Game 01\LAB5\LAB5\LAB5.cpp(13,20): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Generating code
+  1 of 5 functions (20.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  LAB5.vcxproj -> D:\PROJECTS\KMITL\Programming-Fundamental\Lab 5 Text Mode Game 01\LAB5\x64\Release\LAB5.exe
