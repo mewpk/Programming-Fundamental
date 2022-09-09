@@ -19,7 +19,6 @@ int main()
     int x = 38, y = 20;
     draw_ship(x, y);
     
-  
     do
     {
         
