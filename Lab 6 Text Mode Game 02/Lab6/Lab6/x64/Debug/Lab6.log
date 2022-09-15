@@ -1,0 +1,4 @@
+﻿  Lab6.cpp
+D:\PROJECTS\KMITL\Programming-Fundamental\Lab 6 Text Mode Game 02\Lab6\Lab6\Lab6.cpp(22,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\PROJECTS\KMITL\Programming-Fundamental\Lab 6 Text Mode Game 02\Lab6\Lab6\Lab6.cpp(22,20): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Lab6.vcxproj -> D:\PROJECTS\KMITL\Programming-Fundamental\Lab 6 Text Mode Game 02\Lab6\x64\Debug\Lab6.exe
