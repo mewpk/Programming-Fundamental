@@ -3,6 +3,11 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
+
+
+int point = 0;
+
 
 void setcolor(int fg, int bg)
 {
@@ -45,17 +50,52 @@ void clear_bullet(int x, int y)
     gotoxy(x, y);
     printf(" ");
 }
-
-int main()
+void randomStar()
+{
+    srand(time(NULL));
+    for (int i = 1; i <= 20; i++)
+    {
+        gotoxy(rand() % 70 + 10, -rand() % 4 + 2);
+        printf("%c", '*');
+    }
+}
+char cursor(int x, int y)
+{
+    HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);
+    char buf[2];
+    COORD c = {x, y};
+    DWORD num_read;
+    if (!ReadConsoleOutputCharacter(hStd, (LPTSTR)buf, 1, c, (LPDWORD)&num_read))
+        return '\0';
+    else
+        return buf[0];
+}
+void score(){
+    gotoxy(100,0);
+    printf(" ");
+    gotoxy(100,0);
+    printf("%d",point);
+}
+void setup(int x, int y)
 {
     system("cls");
     setcursor(0);
     setcolor(2, 4);
+
+    system("CLS");
+    draw_ship(x, y);
+    randomStar();
+}
+
+int main()
+{
+
     char ch = ' ', vac = ' ';
     int x = 38, y = 20;
-    int bullet[5][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, state = 0, ammo = 5; // {x,y,state}
-    draw_ship(x, y);
-    system("CLS");
+    int bullet = 0, bx, by, ammo = 5;
+    setup(x, y);
+    
+    score();
     do
     {
 
@@ -76,21 +116,19 @@ int main()
             {
                 vac = 's';
             }
-            if (ch == ' ' && ammo > 0)
+            if (ch == ' ' && bullet == 0 && ammo > 0)
             {
                 vac = ' ';
+                bullet = 1;
 
-                bullet[state][2] = 1;
-                bullet[state][0] = x + 3;
-                bullet[state][1] = y - 1;
-                state++;
-                state = state % 5;
-                ammo--;
+                bx = x + 3;
+                by = y - 1;
+
+                Beep(700, 100);
             }
+
+            fflush(stdin);
         }
-
-        fflush(stdin);
-
         if (vac == 'a' && x > 0)
         {
             draw_ship(x -= 1, y);
@@ -104,24 +142,32 @@ int main()
         {
             draw_ship(x, y);
         }
-
-        for (size_t i = 0; i < 5; i++)
+        if (bullet == 1)
         {
-            if (bullet[i][2] == 1)
+            clear_bullet(bx, by);
+            if (by == 0)
             {
-                clear_bullet(bullet[i][0], bullet[i][1]);
-                if (bullet[i][1] == 2)
-                {
-                    bullet[i][2] = 0;
-                    ammo++;
-                }
-                else
-                {
-                    draw_bullet(bullet[i][0], --bullet[i][1]);
-                }
+
+                bullet = 0;
+                // ammo -= 1;
+            }
+            else if (cursor(bx, by - 1) == '*')
+            {
+                gotoxy(bx, by - 1);
+                printf(" ");
+                Beep(700, 100);
+                bullet = 0;
+                gotoxy(rand() % 70 + 10, -rand() % 4 + 2);
+                printf("%c", '*');
+                point++;
+                score();
+                // ammo -= 1;
+            }
+            else
+            {
+                draw_bullet(bx, --by);
             }
         }
-
         Sleep(100);
     } while (ch != 'x');
     return 0;
