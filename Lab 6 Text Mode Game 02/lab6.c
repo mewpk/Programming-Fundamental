@@ -52,7 +52,8 @@ int main()
     setcursor(0);
     setcolor(2, 4);
     char ch = ' ', vac = ' ';
-    int x = 38, y = 20, bullet = 0, bx, by, ammo = 5;
+    int x = 38, y = 20;
+    int bullet[5][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, state = 0, ammo = 5; // {x,y,state}
     draw_ship(x, y);
     system("CLS");
     do
@@ -71,37 +72,56 @@ int main()
             {
                 vac = 'd';
             }
-            if (ch == ' ' && bullet != 1 && ammo > 0)
+            if (ch == 's')
+            {
+                vac = 's';
+            }
+            if (ch == ' ' && ammo > 0)
             {
                 vac = ' ';
-                bullet = 1;
-                bx = x + 3;
-                by = y - 1;
-            }
 
-            fflush(stdin);
+                bullet[state][2] = 1;
+                bullet[state][0] = x + 3;
+                bullet[state][1] = y - 1;
+                state++;
+                state = state % 5;
+                ammo--;
+            }
         }
+
+        fflush(stdin);
+
         if (vac == 'a' && x > 0)
         {
             draw_ship(x -= 1, y);
         }
+
         if (vac == 'd' && x < 80)
         {
             draw_ship(x += 1, y);
         }
-        if (bullet == 1)
+        if (vac == 's' && x > 0 && x < 80)
         {
-            clear_bullet(bx, by);
-            if (by == 2)
+            draw_ship(x, y);
+        }
+
+        for (size_t i = 0; i < 5; i++)
+        {
+            if (bullet[i][2] == 1)
             {
-                bullet = 0;
-                ammo -= 1;
-            }
-            else
-            {
-                draw_bullet(bx, --by);
+                clear_bullet(bullet[i][0], bullet[i][1]);
+                if (bullet[i][1] == 2)
+                {
+                    bullet[i][2] = 0;
+                    ammo++;
+                }
+                else
+                {
+                    draw_bullet(bullet[i][0], --bullet[i][1]);
+                }
             }
         }
+
         Sleep(100);
     } while (ch != 'x');
     return 0;
