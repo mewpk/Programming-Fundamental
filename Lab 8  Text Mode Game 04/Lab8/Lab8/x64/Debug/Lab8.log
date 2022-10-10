@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\PROJECTS\KMITL\Programming-Fundamental\Lab 8  Text Mode Game 04\Lab8\Lab8\Source.cpp(125,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\PROJECTS\KMITL\Programming-Fundamental\Lab 8  Text Mode Game 04\Lab8\Lab8\Source.cpp(139,51): warning C4805: '==': unsafe mix of type 'BOOL' and type 'bool' in operation
+  Lab8.vcxproj -> D:\PROJECTS\KMITL\Programming-Fundamental\Lab 8  Text Mode Game 04\Lab8\x64\Debug\Lab8.exe
