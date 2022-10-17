@@ -83,7 +83,10 @@ char* base64Encoder(char input_str[], int len_str)
 // Driver code
 int main()
 {
-	char input_str[] = "MENON";
+  char text[100];
+  char *str = text;
+  scanf("%s",str);
+	char input_str[] = str;
 	int len_str;
 
 	// calculates length of string

@@ -11,21 +11,11 @@ static char encoding_table[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
                                 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
                                 'w', 'x', 'y', 'z', '0', '1', '2', '3',
                                 '4', '5', '6', '7', '8', '9', '+', '/'};
-static char *decoding_table = NULL;
+
 static int mod_table[] = {0, 2, 1};
 
-void build_decoding_table() {
- 
-    decoding_table = malloc(256);
- 
-    for (int i = 0; i < 64; i++)
-        decoding_table[(unsigned char) encoding_table[i]] = i;
-}
  
  
-void base64_cleanup() {
-    free(decoding_table);
-} 
  
 char *base64_encode(const unsigned char *data,
                     size_t input_length,
@@ -57,14 +47,12 @@ char *base64_encode(const unsigned char *data,
 }
  
  
-
- 
 int main(){
     char str[100];
     char * data = str;
     scanf("%s",data);
     long input_size = strlen(data);
-    char * encoded_data = base64_encode(data, input_size, &input_size);
+    char *encoded_data = base64_encode(data, input_size, &input_size);
     printf("Encoded Data is: %s \n",encoded_data);
     exit(0);
 }
